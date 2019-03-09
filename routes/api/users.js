@@ -4,17 +4,14 @@ const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
+const passport = require('passport');
+
 
 
 // load user model
 const User = require('../../models/User');
 
-//route GET api/users/test
-// desc tests users route
-// access public
 
-router.get('/test', (req,res)=>
-    res.json({msg: "howdy partner users works"}));
 
 
 //route GET api/users/register
@@ -93,6 +90,14 @@ router.post('/login', (req,res)=> {
                 })
         });
 
+});
+
+//route GET api/users/current
+// desc return current user
+// access private
+
+router.get('/current', passport.authenticate('jwt', { session: false }), (req,res)=>{
+    res.json(req.user);
 });
 
 
