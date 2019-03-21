@@ -163,6 +163,8 @@ router.post('/experience',passport.authenticate('jwt', {session: false}),(req,re
         return res.status(400).json(errors);
     }
 
+
+
     Profile.findOne({ user: req.user.id })
     .then(profile => {
         const newExp = {
