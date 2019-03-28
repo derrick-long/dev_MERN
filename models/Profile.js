@@ -38,19 +38,19 @@ const ProfileSchema = new Schema({
     experience: [
         {
             title: {
-                type: String,
-                required: true
+                type: String
+               
             },
             company: {
-                type: String,
-                required: true
+                type: String
+                
             },
             location: {
                 type: String
             },
             from: {
-                type: Date,
-                required: true
+                type: Date
+              
             },
             to: {
                 type: Date
