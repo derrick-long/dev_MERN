@@ -18,8 +18,8 @@ module.exports = function validateEducationInput(data){
         errors.school = 'School field is required';
     }
 
-    if(Validator.isEmpty(data.degree)){
-        errors.degree = 'Degree is required';
+     if(Validator.isEmpty(data.degree)){
+       errors.degree = 'Degree is required';
     }
 
     if(Validator.isEmpty(data.from)){
