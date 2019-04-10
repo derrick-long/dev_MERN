@@ -23,7 +23,7 @@ router.get('/', (req,res)=> {
     Post.find()
         .sort({date: -1})
         .then(posts => res.json(posts))
-        .catch(err => res.status(404).res.json({noposts: 'No posts added'}));
+        .catch(err => res.status(404).json({noposts: 'No posts added'}));
     });
 
 //route GET api/posts/:id
