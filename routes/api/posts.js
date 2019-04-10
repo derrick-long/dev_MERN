@@ -21,10 +21,16 @@ router.get('/test', (req,res)=>
 // access public
 router.get('/', (req,res)=> {
     Post.find()
-        .sort({date: -1})
-        .then(posts => res.json(posts))
-        .catch(err => res.status(404).json({noposts: 'No posts added'}));
-    });
+    .then(posts => {
+        if (posts.length > 1 || posts == undefined) {
+            res.status(404).json({nopostsfound: 'No Posts Added'});
+        } 
+    posts.sort({ date: -1})
+    res.json(posts)
+    })
+        .catch(err => res.status(404).json({nopostsfound: 'No Posts Added'}))
+
+});
 
 //route GET api/posts/:id
 // desc get post by id 
