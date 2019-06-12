@@ -17,10 +17,10 @@ class Dashboard extends Component {
         let dashboardContent; 
 
         if(profile === null || loading) {
-            dashboardContent = <h4> Loading...</h4>
+            dashboardContent = <h4> Loading...</h4>;
         } else {
            if(Object.keys(profile).length > 0){
-            dashboardContent = <h4> DISPLAY PROFILE</h4>
+            dashboardContent = <h4> DISPLAY PROFILE</h4>;
            } else {
             dashboardContent = (
                 <div>
@@ -30,7 +30,7 @@ class Dashboard extends Component {
                         Create Profile
                     </Link>
                 </div>
-            )
+            );
            }
         }
 
