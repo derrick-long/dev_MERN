@@ -5,6 +5,8 @@ import TextFieldGroup from '../common/TextFieldGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
 import SelectListGroup from '../common/SelectListGroup';
 import InputGroup from '../common/InputGroup';
+import { createProfile } from '../../actions/profileActions';
+import { withRouter } from 'react-router-dom';
 
 class CreateProfile extends Component {
     constructor(props) {
@@ -30,10 +32,32 @@ class CreateProfile extends Component {
         this.onSubmit= this.onSubmit.bind(this);
     }
 
-    onSubmit(e) {
-        e.preventDefault();
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.errors) {
+            this.setState({errors: nextProps.errors})
+        }
+    }
 
-        console.log('submit');
+    onSubmit(e) {
+      e.preventDefault();
+
+      const profileData = {
+          handle: this.state.handle,
+          company: this.state.company,
+          website: this.state.website,
+          location: this.state.location,
+          status: this.state.status,
+          skills: this.state.skills,
+          githubusername: this.state.githubusername,
+          bio: this.state.bio,
+          twitter: this.state.twitter,
+          facebook: this.state.facebook,
+          linkedin: this.state.linkedin,
+          youtube: this.state.youtube,
+          instagram: this.state.instagram
+
+      }
+      this.props.createProfile(profileData, this.props.history);
     }
 
     onChange(e) {
@@ -148,7 +172,7 @@ class CreateProfile extends Component {
                                  <TextFieldGroup 
                                     placeholder= "Github Username"
                                     name="githubusername"
-                                    value={this.state.handle}
+                                    value={this.state.githubusername}
                                     onChange={this.onChange}
                                     error={errors.githubusername}
                                     info="If you want your latest repos and a Github link, include your username."
@@ -163,7 +187,9 @@ class CreateProfile extends Component {
                                 />
 
                                 <div className="mb-3">
-                                    <button onClick={() =>{
+                                    <button 
+                                    type="button"
+                                    onClick={() =>{
                                     this.setState(prevState=> ({
                                         displaySocialInputs: !prevState.displaySocialInputs
                                     }))
@@ -195,4 +221,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 })
 
-export default connect(null)(CreateProfile);
+export default connect(mapStateToProps, { createProfile })(withRouter(CreateProfile));
