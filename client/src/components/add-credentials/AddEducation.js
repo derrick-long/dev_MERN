@@ -111,20 +111,7 @@ class AddEducation extends Component {
                                 error={errors.to}
                                 disabled={this.state.disabled ? 'disabled' : ''}
                                 />
-                                <div className="form-check mb-4">
-                                    <input 
-                                    type="checkbox"
-                                    className="form-check-input"
-                                    name="current"
-                                    value={this.state.current}
-                                    checked={this.state.current}
-                                    onChange={this.onCheck}
-                                    id="current"
-                                    />
-                                    <label htmlFor="current" className="form-check-label">
-                                        Current Job
-                                    </label>
-                                </div>
+                    
                                 <TextAreaFieldGroup 
                                 placeholder= "Program Description"
                                 name="description" 
