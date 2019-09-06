@@ -145,7 +145,7 @@ class CreateProfile extends Component {
                                 />
                                  <TextFieldGroup 
                                     placeholder= "Website"
-                                    name="webstie"
+                                    name="website"
                                     value={this.state.website}
                                     onChange={this.onChange}
                                     error={errors.website}
